@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Manage_Meeting_Rooms {
     /**
-     * 第一题找所有人空闲的时间，这是第二题
+     * The first question finds everyone�s free time, this is the second question
      *
      *  We are writing a tool to help users manage their calendars at a corporation.
      *  Given a list of meeting times and sizes, and a list of the available meeting
@@ -46,7 +46,7 @@ public class Manage_Meeting_Rooms {
      *
      *  m = number of meetings
      *
-     *  面试官说可以暴力遍历，贪心或者dp
+     * The interviewer said that it can be traversed by violence, greedy or dp
      */
 
     /**

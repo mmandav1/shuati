@@ -7,57 +7,57 @@ import java.util.Set;
 
 public class Friend_Circle {
     /**
-     * 1st Question: 输出所有的employee的friendlist -> 就是用一个map存起来然后打印就好了
-     * （这个是无向图，e.g: 1和2是朋友，2的列表里也要有1）
-     * 2nd Question: 输出每个department里有多少人的朋友是其他部门的
-     * ->也就是遍历一遍就好了
-     * 3rd Question: 输出是否所有employee都在一个社交圈
-     * -> 我当时想的就是随便找一个点，用DFS遍历一遍，如果所有点都被遍历到就return true，不然就是false.
+     * 1st Question: Output the friendlist of all employees -> just save it with a map and print it
+     * (This is an undirected graph, eg: 1 and 2 are friends, there must be 1 in the list of 2)
+     * 2nd Question: Output how many friends of each department belong to other departments
+     * -> Just traverse it once
+     * 3rd Question: Output whether all employees are in a social circle
+     * -> What I thought was to find a point at random and traverse it with DFS. If all the points are traversed, return true, otherwise it will be false.
      *
-     * 有一个employList
-     *     String[] employeesInput = {
-     *       "1,Richard,Engineering",
-     *       "2,Erlich,HR",
-     *       "3,Monica,Business",
-     *       "4,Dinesh,Engineering",
-     *       "6,Carla,Engineering",
-     *       "9,Laurie,Directors"
-     *     };
-     * 一个friendshipList，friend关系是双向的
-     *     String[] friendshipsInput = {
-     *       "1,2",
-     *       "1,3",
-     *       "1,6",
-     *       "2,4"
-     *     };
-     * 1. 写一个函数返回每个人的friend的adjacency list
-     * 比如这个例子里返回
-     * 1：2 3 6
-     * 2：1 4
-     * 3：1
-     * 4：2
-     * 6：1
-     * 9：
+     * There is an employList
+     * String[] employeesInput = {
+     * "1,Richard,Engineering",
+     * "2,Erlich,HR",
+     * "3,Monica,Business",
+     * "4,Dinesh,Engineering",
+     * "6,Carla,Engineering",
+     * "9,Laurie,Directors"
+     * };
+     * A friendshipList, the friendship relationship is two-way
+     * String[] friendshipsInput = {
+     * "1,2",
+     * "1,3",
+     * "1,6",
+     * "2,4"
+     * };
+     * 1. Write a function to return the adjacency list of everyone's friend
+     * For example, return in this example
+     * 1: 2 3 6
+     * 2: 1 4
+     * 3: 1
+     * 4: 2
+     * 6:1
+     * 9:
      *
      * ###
-     * 题目是原先OA的拓展，employee的问题。给两个list，第一个list存了每个人的id，名字，公司名称。
-     * 第二个list存friendship tuples。
+     * The topic is the expansion of the original OA, the employee problem. For two lists, the first list stores the id, name, and company name of each person.
+     * The second list saves friendship tuples.
      *
-     * 然后有两问，第一问是返回每个人的friendlist。
-     * 第二问是返回每个公司有多少员工，以及这些员工中有多少有外公司的朋友。
-     * 然后两问都要给时间空间复杂度。图的问题，第二问时间复杂度是O(E+V)
+     * Then there are two questions. The first question is to return everyone's friendlist.
+     * The second question is to return how many employees each company has, and how many of these employees have friends from outside companies.
+     * Then both questions must give time and space complexity. The graph problem, the second question is the time complexity is O(E+V)
      */
 
     public static Map<Integer, Set<Integer>> generateMap(String[] employees, String[] friendships) {
         Map<Integer, Set<Integer>> map = new HashMap<>();
 
-        for (String employee : employees) {
+        for (String employee: employees) {
             String[] parts = employee.split(",");
             int employeeId = Integer.parseInt(parts[0]);
             map.put(employeeId, new HashSet<>());
         }
 
-        for (String friendship : friendships) {
+        for (String friendship: friendships) {
             String[] parts = friendship.split(",");
             int id1 = Integer.parseInt(parts[0]);
             int id2 = Integer.parseInt(parts[1]);
@@ -73,7 +73,7 @@ public class Friend_Circle {
         Map<Integer, Set<Integer>> friendsMap = generateMap(employees, friendships);
 
         Map<String, Set<Integer>> departmentsMap = new HashMap<>();
-        for (String employee : employees) {
+        for (String employee: employees) {
             String[] parts = employee.split(",");
             int employeeId = Integer.parseInt(parts[0]);
 
@@ -86,14 +86,14 @@ public class Friend_Circle {
             res.get(parts[2])[0]++;
         }
 
-        for (String employee : employees) {
+        for (String employee: employees) {
             String[] parts = employee.split(",");
             int employeeId = Integer.parseInt(parts[0]);
             String department = parts[2];
             Set<Integer> employeeSet = departmentsMap.get(department);
             Set<Integer> friendsList = friendsMap.get(employeeId);
 
-            for (int friend : friendsList) {
+            for (int friend: friendsList) {
                 if (!employeeSet.contains(friend)) {
                     res.get(department)[1]++;
                     break;

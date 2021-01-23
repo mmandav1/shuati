@@ -1,18 +1,18 @@
 package Interviews.Karat;
 
-import java.util.*;
+import java.util. *;
 
 public class Badge_And_Employee {
     /**
      * #1
-     * We are working on a security system for a badged-access room in our company's building.
+     * We are working on a security system for a badged-access room in our company's building.
      * Given an ordered list of employees who used their badge to enter or exit the room, write
      * a function that returns two collections:
      *
      * 1. All employees who didn't use their badge while exiting the room
-     * – they recorded an enter without a matching exit.
-     * 2. All employees who didn't use their badge while entering the room  
-     * – they recorded an exit without a matching enter.
+     * � they recorded an enter without a matching exit.
+     * 2. All employees who didn't use their badge while entering the room  
+     * � they recorded an exit without a matching enter.
      *
      * #2
      * We want to find employees who badged into our secured room unusually often.
@@ -32,28 +32,28 @@ public class Badge_And_Employee {
      * All enters/exits are valid.
      *
      * ###
-     * 1. 一个公司记录了门禁系统的log，检查是否有人非法进入，log是个list，list有order，每一项是一个pair，
-     * 前面是string人名，后面是string "enter" 或 "exit"，一个人的出入记录形成先enter后exit的情况视为合法
+     * 1. A company records the log of the access control system to check whether anyone has entered illegally. The log is a list, the list has an order, and each item is a pair.
+     * The name of the person in front of the string, followed by the string "enter" or "exit", a person�s entry and exit records are considered legal if they are entered first and then exit
      *
-     * input: 上面描述的list
-     * return: 两个list记录非法出入的人, 第一个list记录只有enter记录但是没有exit记录的人，第二个list记录只有exit
-     *         记是但是没有enter记录的人
-     * 注意：1. 同一人，enter必须出现在exit前面，如果一个人先exit后enter，说明有问题，这个人应在两个返回list都出现一次
-     *      2. 每个人可以多次进出，只要有一次违反上面的要求，就需要依据情况加入返回的list
+     * input: the list described above
+     * return: Two lists record people who enter and leave illegally, the first list record has only enter records but no exit records, and the second list record only has exit
+     * People who remember yes but have no record of enter
+     * Note: 1. For the same person, enter must appear before exit. If a person exits first and then enters, there is a problem. This person should appear once in both return lists
+     * 2. Everyone can enter and exit multiple times, as long as there is one violation of the above requirements, they need to be added to the returned list according to the situation
      *
      *
-     * 2. 背景和第一题是一样的，只是log记录的内容有所不同，list每一项还是一个pair，前面是string人名，不会重复，后面是另一个list，
-     * list里记录这个人进门的时间log（不再考虑出去）
+     * 2. The background is the same as the first question, except that the content of the log record is different. Each item in the list is still a pair. The name of the string is in the front, which will not be repeated. The back is another list.
+     * Record the time log of the person entering the door in the list (no longer consider going out)
      *
-     * input: 上面描述的list
-     * return:  一个list，每一项是一个pair，前项是人名，后项是个list，list的内容是对这个人的时间log做filter，
-     *          如果有三个或以上连续的记录出现在一个小时范围之内，这些记录需要出现在返回的list里面，所有不overlap
-     *          的这种case都要记录
-     * 注意：1. 时间显示方式1350代表1点50, 1400代表两点时间是60进位，但是给的数字是正常的100才进位，算时差的时候要考虑
-     *      2. 如果时间log里记录有overlap的话（[1350, 1400, 1450, 1500] 前三个记录和后三个记录都在一小时范围之内），
-     *         返回前三个记录就好，面试官告诉我的是testcase不会有这种情况
+     * input: the list described above
+     * return: a list, each item is a pair, the former item is the name of the person, the latter item is a list, the content of the list is to filter the person�s time log,
+     * If there are three or more consecutive records appearing within one hour, these records need to appear in the returned list, all of which do not overlap
+     * This case must be recorded
+     * Note: 1. The time display method 1350 means 1:50, 1400 means two o'clock and the time is 60 rounds, but the number given is normal 100 before the rounds, and the time difference should be considered when calculating the time difference.
+     * 2. If overlap is recorded in the time log ([1350, 1400, 1450, 1500] the first three records and the last three records are within one hour),
+     * Just return the first three records, the interviewer told me that this will not happen in the testcase
      *
-     * 第三道大概是同时在屋里的最大的group，而且要求group出现两次。输出group而且group在一起的那段时间.
+     * The third channel is probably the largest group in the room at the same time, and requires the group to appear twice. Output group and the period of time when the group is together.
      */
 
     static void getGroup(String[][] records) {
@@ -124,7 +124,7 @@ public class Badge_And_Employee {
         int endPos = startIndex;
         while (endPos < list.size()) {
             if (list.get(endPos) <= endVal) {
-                endPos++;
+                endPos ++;
             } else {
                 break;
             }
@@ -206,4 +206,3 @@ public class Badge_And_Employee {
         security(records2);
     }
 }
-

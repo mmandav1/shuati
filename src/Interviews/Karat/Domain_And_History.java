@@ -7,20 +7,20 @@ import java.util.Map;
 
 public class Domain_And_History {
     /**
-     * 1.给广告在每个domain上被click的次数,要求返回domain及其所有sub domain 被click的总次数
+     * 1. Give the number of times that the ad is clicked on each domain, and request the total number of times that the domain and all sub domains have been clicked
      *
-     * 输入：[
-     *            ["google.com", "60"],
-     *            ["yahoo.com", "50"],
-     *            ["sports.yahoo.com", "80"]
-     *       ]
+     * Input: [
+     *            ["google.com", "60"],
+     *            ["yahoo.com", "50"],
+     *            ["sports.yahoo.com", "80"]
+     *       ]
      *
-     * 输出：[
-     *             ["com", "190"], (60+50+80)
-     *             ["google.com", "60"], 
-     *             ["yahoo.com", "130"] (50+80)
-     *             ["sports.yahoo.com", "80"]
-     *          ]
+     * Output: [
+     *             ["com", "190"], (60+50+80)
+     *             ["google.com", "60"], 
+     *             ["yahoo.com", "130"] (50+80)
+     *             ["sports.yahoo.com", "80"]
+     *          ]
      *
      * Original Question:
      * We have some clickstream data that we gathered on our client's website. Using cookies, we collected snippets of users' anonymized URL histories while they browsed the site. The histories are in chronological order and no URL was visited more than once per person.
@@ -55,9 +55,9 @@ public class Domain_And_History {
      * """
      *
      * !!!
-     * edge case是如果某个domain的名字一样，但是所在subdomain的位置不一样不能算成一个，
-     * 所以yahoo.com和yahoo.yahoo.com第一个yahoo算成位置为二的domain name,第二个里面
-     * 的yahoo要分别算成三和二的位置，不能全部加起来算一个，面试官会测试这种情况，
+     * Edge case means that if the name of a domain is the same, but the position of the subdomain is different, it cannot be counted as one
+     * So the first yahoo of yahoo.com and yahoo.yahoo.com is counted as the domain name with the second position, and the second one
+     * The yahoo should be counted as three and two positions, not all of them can be counted as one, the interviewer will test this situation,
      *
      *
      * 2.
@@ -75,13 +75,13 @@ public class Domain_And_History {
      *
      * LE_811_Subdomain_Visit_Count
      *
-     * 2.给每个user访问历史记录，找出两个user之间longest continuous common history
-     * 输入： [
-     *              ["3234.html", "xys.html", "7hsaa.html"], // user1
-     *              ["3234.html", ''sdhsfjdsh.html", "xys.html", "7hsaa.html"] // user2
-     *        ],
+     * 2. Give each user access to the history record and find out the longest continuous common history between two users
+     * Input: [
+     *              ["3234.html", "xys.html", "7hsaa.html"], // user1
+     *              ["3234.html", ''sdhsfjdsh.html", "xys.html", "7hsaa.html"] // user2
+     *        ],
      *
-     * user1 and user2 （指定两个user求intersect）
+     * user1 and user2 (specify two users for intersect)
      *
      * 输出：["xys.html", "7hsaa.html"]
      *
@@ -178,15 +178,15 @@ public class Domain_And_History {
      *  0 of 1  The Best Hollywood Coats
      *  3 of 3  Buy wool coats for your pets
      *
-     *  用几个map来回倒腾就行。
+     * Use a few maps to go back and forth.
      *
      * Another one:
-     * 第三题:
-     * 这道题好像没在地里看到过. 统计点击广告的数量以及最后购买的数量. given 三个 list, 包括 purchasedUser(所有购买用户id),
-     * ipaddressUser(IP地址和用户对应列表), history(浏览记录, 包括IP地址, 时间 和 商品(广告)). 应该就 split 一下,
-     * 然后提取一下所有的数据, 遍历一下 history 就好.
+     * Third question:
+     * This question does not seem to have been seen in the ground. Count the number of clicks on ads and the number of last purchases. Given three lists, including purchasedUser (all user id)
+     * ipaddressUser (IP address and user corresponding list), history (browsing record, including IP address, time and product (advertising)). It should be split,
+     * Then extract all the data and traverse the history.
      *
-     * 第三题相当于是这样
+     * The third question is equivalent to this
      * String[] purchasedUser = ["203948535", "56856", "b86785"]
      * String[] history = ["234.64.23.123,2018.10.3,item A",
      * "234.457.45.123,2018.10.3,item A",
@@ -195,13 +195,13 @@ public class Domain_And_History {
      * "74545,234.457.2345.123"
      * "2347,234.64.23.123"
      * ]
-     * 比如 item A 有两个点击记录, 但实际上对应的 ip 地址所对应的用户 id 只有一人最终购买, 所以输出的就是这样的形式:
+     * For example, item A has two click records, but the user id corresponding to the corresponding ip address is actually purchased by only one person, so the output is in this form:
      * 1 of 2 item A
-     * 给出两个pair vector
-     * {访问者ip和对应访问网站的text}
-     * {用户id和对应ip}
-     * 再加上购买者的id vector
-     * 返回每个网站text 所对应购买数和访问数
+     * Give two pair vectors
+     * {Visitor ip and text corresponding to the visited website}
+     * {User id and corresponding ip}
+     * Plus the id vector of the buyer
+     * Return the number of purchases and visits corresponding to the text of each website
      *
      */
     static Map<String, Integer> count(Map<String, Integer> ori) {
@@ -290,5 +290,4 @@ public class Domain_And_History {
     }
 
 }
-
 

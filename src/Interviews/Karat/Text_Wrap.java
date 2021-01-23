@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Text_Wrap {
     /**
-     * 题目并没有在面经里见过，都是给定行距做文字line wrapper。第一题是保证词的完整性进行wrap，
-     * 第二题比较麻烦，需要先在词与词之间加“-”，
-     * 如果还有位置再加“--”，最后一行平均分配，在词与词之间加任意多个“-”。
+     * The title has not been seen in the face-to-face script, but it is a text line wrapper with a given line spacing. The first question is to ensure the integrity of the word to wrap,
+     * The second question is more troublesome, you need to add "-" between words first,
+     * If there is a place, add "-", the last line is evenly distributed, and any number of "-" is added between words.
      * # We are building a word processor and we would like to implement a "word-wrap" functionality.
      *
      * # Given a maximum number of characters in a line followed by a list of words,
@@ -40,13 +40,13 @@ public class Text_Wrap {
      * # n = number of words / total characters
      *
      * ####
-     * 给一个word list比如["I", "am", "so" "sad"], 和最长字符数比如4， 把这些单词用下划线wrap起来输出：
-     * [“I_am”, "so", "sad"] 保持输出的每个string的长度都小于等于最长字符数。 这一题大家可以看我的答案之前试一试
-     * ，我的感受是很容易跪在最后一个单词无法输出的情况
+     * Give a word list such as ["I", "am", "so" "sad"], and the longest number of characters such as 4, wrap these words with underscores and output:
+     * ["I_am", "so", "sad"] Keep the length of each output string less than or equal to the maximum number of characters. You can try this question before looking at my answer
+     * My feeling is that it is easy to kneel when the last word cannot be output
      *
      * ####
-     * 第一题 word wrap：给一个word list 和最大的长度，要求把这些word用 - 串联起来，但不能超过最大的长度。
-     * 第二题 word processor: 当时有点晕，半天没搞懂题意。。。面试官说可以用第一题的function。
+     * The first question word wrap: Give a word list and the maximum length, and require these words to be concatenated with -, but cannot exceed the maximum length.
+     * The second word processor: I was a little dizzy at the time, and I didn't understand the meaning of the question for a long time. . . The interviewer said that the function of the first question can be used.
      * We are building a word processor and we would like to implement a "reflow" functionality that
      * also applies full justification to the text.
      *
@@ -71,14 +71,14 @@ public class Text_Wrap {
      *
      *
      * ####
-     * 第一题: 是要求把尽量多的词用‘-’串起来，但要求长度在某个数之内。我的主要时间就卡在了这道题，
-     * 在最后5分钟做出来了，哎，手太生疏了。。。要想清楚需要维护的变量是什么就会很简单。。
-     * 第二题: 就是基于第一题把给的句子拆开，然后再用类似task schedule的方式逐一插入‘-’直到达到最大长度。。
+     * The first question: It is required to string as many words as possible with'-', but the length is required to be within a certain number. My main time is stuck on this question,
+     * Made it in the last 5 minutes, hey, the hands are too rusty. . . It is easy to figure out what variables need to be maintained. .
+     * The second question: It is based on the first question to split the given sentence, and then use a similar task schedule to insert'-' one by one until the maximum length is reached. .
      *
      * ###
-     * 第一题：给了若干个string和最大长度，重新排列字符串，让每行长度不超过最大长度（同一行字符串之间有空格）
+     * The first question: Give several strings and the maximum length, rearrange the strings so that the length of each line does not exceed the maximum length (there is a space between the same line of strings)
      * （str1\n str2\n str3\n -> str1 str2\n str3\n）
-     * 第二题：找到一个string里面最长的重复substring的长度 （aaaaaaaabbbbbaaa -> a 8) (***)
+     * The second question: Find the length of the longest repeated substring in a string (aaaaaaaabbbbbaaa -> a 8) (***)
      *
      * Reference : LE_68_Text_Justification
      */
@@ -88,7 +88,7 @@ public class Text_Wrap {
         if (words == null || words.length == 0) return res;
 
         for (int i = 0, w; i < words.length; i = w) {
-            int len = -1;
+            int len ​​= -1;
             for (w = i; w < words.length && len + words[w].length() + 1 <= max; w++) {
                 len += words[w].length() + 1;
             }
@@ -193,5 +193,4 @@ public class Text_Wrap {
     }
 
 }
-
 
