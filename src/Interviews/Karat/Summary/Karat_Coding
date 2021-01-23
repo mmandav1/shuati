@@ -1,8 +1,8 @@
 #
-一个ArrayList只有两个元素，其中一个只出现一次，找出这个元素即可 {1, 1, 1, 2, 1, 1}，秒了
+An ArrayList has only two elements, and one of them only appears once. Just find this element {1, 1, 1, 2, 1, 1}, seconds
 
 #
-给IDE设计一个autocomplete功能。给出一个如下的String[]。要求输入大写字母和几个小写字母后，实现autocomplete。大写字母必须全部match。感觉是用Trie，但怎么存怎么查没想明白。欢迎大家讨论。
+Design an autocomplete function for IDE. Give a String[] as follows. After requiring the input of uppercase letters and a few lowercase letters, autocomplete is realized. All uppercase letters must be matched. I feel like I use Trie, but I don't know how to save and check. Everyone is welcome to discuss.
 
 String[]  className {
         "GraphView",
@@ -16,10 +16,10 @@ autocomplete(String[] className, "Data");  --> {"DataGraphView", "DataController
 autocomplete(String[] className, "GVi");   -->  {"GraphView",  "GraphViewController"};
 autocomplete(String[] className, "GraphController");   -->  {""};
 
-第一种，正常的建立字典树，只是在搜索的时候，需要处理：凡是在两个大写字母中间都要加一个*，在搜索字典树的时候，遇到*，表示可以继续递归所有小写字母的节点，有点类似于LC上的带有*的操作；
-第二种，就是给大写字母建字典树，然后在每个TrieNode里在挂一个map<"小写字母组成的串"，Set<TrieNode>>，比如对“GraphView”， 建两个TrieNode: G 和V， 然后在G的节点上，挂一个map: [r, G], [ra, G], [rap, G], [raph, G]，就这样GraV就能指导V这个节点了。
+The first is to build the dictionary tree normally, but it needs to be processed when searching: always add a * between the two uppercase letters. When searching the dictionary tree, if you encounter *, it means you can continue to recurse all lowercase letters. The node is similar to the operation with * on LC;
+The second is to build a dictionary tree for uppercase letters, and then hang a map<"string of lowercase letters", Set<TrieNode>> in each TrieNode. For example, for "GraphView", create two TrieNodes: G and V, and then hang a map on the G node: [r, G], [ra, G], [rap, G], [raph, G], so GraV can guide the V node.
 
-和正常的trie一樣，只對大寫字母建trie，每個node保存一個word list，然後搜索的時候直接搜索大寫字母的縮寫，然後返回最後的一個node的word list
+Just like a normal trie, only the uppercase letters are created. Each node saves a word list, and then directly searches for the abbreviation of uppercase letters when searching, and then returns the word list of the last node
 
 #
 input:
@@ -27,65 +27,65 @@ input:
 {time, user id, resource id},
 {time, user id, resource id}]
 
-第一題：求每個user session start & end time
+Question 1: Find the start & end time of each user session
 output:
 [{user: [start time, end time]},
 {user: [start time, end time]}]
 
-第二題：求五分鐘內被accessed最多次的resource id
+Question 2: Find the resource id that has been accessed the most times in five minutes
 
 #
-我只完成了2道题，第一题input是一个string，string里有一个数字和一个string（比如"111, dddddd"）。要输出substring和对应出现的次数。
-第二题是输入两个string array，输出长度最大的共同sub array。
+I only completed 2 questions. The first input is a string, and there is a number and a string in the string (such as "111, dddddd"). To output the substring and the corresponding number of occurrences.
+The second question is to input two string arrays and output the common sub array with the largest length.
 
 
 
-3.bug free 要求高
+3. High bug free requirements
 
 #1
-第一题: 是给一个list，一个entry是 一个学生id对应一个课程，要求输出每两个学生之间的共同课程。就用hashtable过一遍，比较简单。
-第二题: 是给一个list，一个entry是 一个前置课程和当前课程，包含了所有的课程，要求输出中间的课程。这个用doublu linked list 串起来，
-       然后拿到head后用slow fast pointer找到list的中间点就好了，也是比较简单。但是我当时比较慌一下时间就结束了。。。
+The first question: is to give a list, an entry is a student id corresponding to a course, it is required to output the common courses between every two students. Just use hashtable again, it's relatively simple.
+The second question: is to give a list, an entry is a pre-course and the current course, including all courses, require output of intermediate courses. Use the doublu linked list to string together,
+       Then after getting the head, use the slow fast pointer to find the middle point of the list, which is relatively simple. But I was more panicked and time ended. . .
 #2
-第一题: 是要求把尽量多的词用‘-’串起来，但要求长度在某个数之内。我的主要时间就卡在了这道题，在最后5分钟做出来了，哎，手太生疏了。。。
-      要想清楚需要维护的变量是什么就会很简单。。
-第二题: 就是基于第一题把给的句子拆开，然后再用类似task schedule的方式逐一插入‘-’直到达到最大长度。。
-(楼主能详细说一下redo的两道题吗，第一题的意思是说给一串word,然后尽可能多的把这些word用'-'串起来但是长度不能超过某个给定值得意思吗？
- 第二题的意思是说给定一个max_length, 把第一题中所有的word按顺序串起来的意思吗？谢谢！)
+The first question: It is required to string as many words as possible with'-', but the length is required to be within a certain number. My main time was stuck on this question, and I finished it in the last 5 minutes. Hey, my hands are too rusty. . .
+      It is easy to figure out what variables need to be maintained. .
+The second question: It is based on the first question to split the given sentence, and then use a similar task schedule to insert'-' one by one until the maximum length is reached. .
+(Can the host talk about the two redo questions in detail. The first question means to a string of words, and then as many words as possible are stringed together with'-' but the length cannot exceed a given value. ?
+ The second question means that given a max_length, does it mean to string together all the words in the first question in order? Thank you! )
 
 #3
-算法题：
-1. substring count， 这个地里已经有很多解答。 (!!!)
+Algorithm question:
+1. Substring count, there have been many answers in this field. (!!!)
 https://www.geeksforgeeks.org/number-of-substrings-of-one-string-present-in-other/
 
-2. 给定一个graph（是一个2D input array），第一问：写一个function返回graph里面只有一个parent的集合，跟没有parent的集合。
-   solution ： 2 hashmaps 第二问：给定两个leaf，写一个function判断这两个leaf是不是有共同的parent。solution： BFS
+2. Given a graph (a 2D input array), the first question: write a function to return a collection with only one parent in the graph, and a collection without a parent.
+   solution: 2 hashmaps Second question: Given two leaves, write a function to determine whether the two leaves have a common parent. solution: BFS
 
-这里要注意的是：
-1. 第二题第二问跟第一问关系不大，不要惯性地陷入到第一问的解题中去，我就是看到第二问，觉得在第一问基础上修改即可，浪费了超级多的时间。
-2. 第二问不能用DFS，非常不好解
+The things to note here are:
+1. For the second question, the second question has little to do with the first question. Don’t habitually fall into the solution of the first question. I just saw the second question and felt that it would be a waste to modify it based on the first question. It took a lot of time.
+2. The second question cannot use DFS, which is very difficult to understand
 
 #4
-第一题，有个长的string和一个短的string，问长的string有多少substring和短的一样要求不能用embedded function。
-就用最笨的方法，从长的string里一个每个位置和短的string比。好像没有什么更好的方法。
-第二题，数学理论，不用编程。已知一堆点，每个点有xy坐标，可以是红色或蓝色。给一个新点，怎么判断它的坐标。
-扯了些KNN, SVM, logistic regression.
-第三题，有一个正整数列，给一个阈值t，求连续子数列的和在不超过t的情况下最多可以是多少。方法不难，两个pointer，
-然后往右移，应该可以。但是写的时候由于考虑各种特殊情况（比如所有的数都大于t），bug很多，最后也没改完。小哥一直问问题，
-我也没法集中精力找bug。小哥问方法能不能优化，当时没意识到，后来他提醒，应该是说在过程中已经有和是t了就可以直接返回。
-剩三分钟的时候让我停下来问问有什么关于公司的问题，我心思都在bug上，随便问了一个问题。
-感觉要跪。
+The first question is a long string and a short string. How many substrings are in the long string is the same as the short one. The embedded function cannot be used.
+Just use the most stupid way to compare each position from the long string to the short string. There seems to be no better way.
+The second question, mathematical theory, does not require programming. Given a bunch of points, each point has an xy coordinate, which can be red or blue. Given a new point, how to judge its coordinates.
+Talked about KNN, SVM, logistic regression.
+In the third question, there is a positive integer column, given a threshold t, find out what the maximum sum of the continuous sub-sequence can be if it does not exceed t. The method is not difficult, two pointers,
+Then move it to the right, it should work. However, due to various special circumstances (for example, all numbers are greater than t) when writing, there are many bugs, and I haven't changed it in the end. Brother kept asking questions,
+I can't concentrate on finding bugs. The younger brother asked if the method could be optimized, but he didn't realize it at the time. Later, he reminded that it should be said that there is already a value in the process and it can be returned directly.
+With three minutes left, let me stop and ask any questions about the company. My mind was all about bugs, and I just asked a question.
+Feeling to kneel.
 
 #5
 http://interviewsource.blogspot.com/
-9月19好以后的题目是所有indeed onsite题目
+After September 19, the topics are all indeed onsite topics
 
 #6
-题目都是鸡精（平均+爬虫tab+k个数据流)
+The topics are all chicken essence (average + crawler tab + k data streams)
 
 #7
-第一题 word wrap：给一个word list 和最大的长度，要求把这些word用 - 串联起来，但不能超过最大的长度。
-第二题 word processor: 当时有点晕，半天没搞懂题意。。。面试官说可以用第一题的function。
+The first question word wrap: Given a word list and the maximum length, these words are required to be concatenated with -, but the maximum length cannot be exceeded.
+The second question word processor: I was a little dizzy at the time, I didn't understand the meaning of the question for a long time. . . The interviewer said that the function of the first question can be used.
 We are building a word processor and we would like to implement a "reflow" functionality that
 also applies full justification to the text.
 
@@ -110,34 +110,34 @@ reflowAndJustify(lines, 24) ... "reflow lines and justify to length 24" =>
 
 
 #8
-1. 给你两个user的在某个网站进行的action list, 例如
+1. Give you the action list of two users on a certain website, for example
 ["start","/account","/notification","/a","/b"],
 ["start","/a","/b"],
-找两个user最长共同连续action list. 如前例应该返回["/a","/b"]
+Find the longest common continuous action list of two users. As in the previous example, it should return ["/a","/b"]
 
-2. 给你一个user_made_purchase_id:[123,345], 一个ad_clicks: [[IP_Address, Time, Ad_Text]],
+2. Give you a user_made_purchase_id: [123,345], an ad_clicks: [[IP_Address, Time, Ad_Text]],
 一个user_id_ip:[IP_Address,User_id]
 
 #
-给一个word list比如["I", "am", "so" "sad"], 和最长字符数比如4， 把这些单词用下划线wrap起来输出：
- [“I_am”, "so", "sad"] 保持输出的每个string的长度都小于等于最长字符数。 这一题大家可以看我的答案之前试一试
- ，我的感受是很容易跪在最后一个单词无法输出的情况
+Give a word list such as ["I", "am", "so" "sad"], and the longest number of characters such as 4, wrap these words with underscores and output:
+ ["I_am", "so", "sad"] Keep the length of each output string less than or equal to the maximum number of characters. You can try this question before looking at my answer
+ , My feeling is that it’s easy to kneel when the last word cannot be output
 
 
 #
-Karat好好准备不难的，都能找到前辈的面经。都是三道题一套一起出，我总结了一下常见的几套，大家搜一下就搜得到啦。
+It is not difficult for Karat to prepare well, and he can find the face of seniors. All three questions are presented together in one set. I have summarized the common ones, and you can find them by searching.
 
-领域套	每题单独条件	subdomain	lcs	ads conversion rate (**)
-会议套	给会议intervals	新会议是否可行	所有空闲时间	给房间容量会议细节，如何安排会议 (**)
-计算器套	给string算结果	+ - digit	+ - ( ) digit	+ - ( ) variables
-学生套(**)	给学生上的课	学生共有课程	给上课顺序，找一个中间课	找所有中间课
-宝藏套	给二维矩阵	返回某点邻居	返回某点出发可抵达区域	给起点终点，最短路径获得所有宝藏
-矩形套	给二维矩阵	找到一个矩形	找到所有矩形	找到所有连通量
+Domain set Individual conditions for each question subdomain lcs ads conversion rate (**)
+Meeting package Give meeting intervals Is the new meeting feasible? All free time Give room capacity Meeting details, how to arrange the meeting (**)
+Calculator sets the result of string calculation +-digit +-() digit +-() variables
+Student set (**) Classes for students. Students share courses. Give the order of classes, find an intermediate course. Find all intermediate courses
+Treasure set Give a two-dimensional matrix, return to a certain point of neighbors, return to a certain point, the reachable area, give the start and end points, the shortest path to get all the treasures
+Rectangle set to a two-dimensional matrix find a rectangle find all rectangles find all connected components
 
 
 #
-题目并没有在面经里见过，都是给定行距做文字line wrapper。第一题是保证词的完整性进行wrap，第二题比较麻烦，需要先在词与词之间加“-”，
-如果还有位置再加“--”，最后一行平均分配，在词与词之间加任意多个“-”。
+The topic has not been seen in the face script, it is a text line wrapper with a given line spacing. The first question is to ensure the integrity of the word and wrap, and the second question is more troublesome. You need to add "-" between words first.
+If there is still a place, add "-", the last line is evenly distributed, and add any number of "-" between words.
 # We are building a word processor and we would like to implement a "word-wrap" functionality.
 
 # Given a maximum number of characters in a line followed by a list of words, return a collection of strings where each string element represents a line that contains as many words as possible, with the words in each line being concatenated with a single '-' (representing a space, but easier to see for testing). The length of each string must not exceed the maximum character length per line.
@@ -192,7 +192,6 @@ Student_And_Class
 
 #
 Text_Wrap
-
 
 
 

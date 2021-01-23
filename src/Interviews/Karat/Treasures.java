@@ -8,8 +8,8 @@ import java.util.Set;
 public class Treasures {
     /**
      *
-     * 1.  实现findLegalMoves()
-     * legal move 就是下一步可以走哪里。很简单 就是上下左右四个点 如果不是墙就返回。
+     * 1. Implement findLegalMoves()
+     * Legal move is where you can go next. It is very simple to return to the four points up, down, left and right if they are not walls.
      * List<int[]> steps = solution.findLegalMoves(board, start1[0], start1[1]);
      * //     int[][] board = new int[][] {
      * //       {0,  0,  0, -1, -1},
@@ -22,12 +22,12 @@ public class Treasures {
      * //     };
      *
      * 2. 实现boolean isReachable(int[][] board, int x, int y)
-     * 还是那个board，问能否到达所有的0
+     * Still the same board, ask if all 0s can be reached
      *
-     * 给定一个终点，问矩阵中所有0的点能不能走到终点。BFS解决
+     * Given an end point, ask whether all 0 points in the matrix can reach the end point. BFS solution
      *
-     * 还是这样的board，输入是board和board内一个点，写function判断其余所有点是否都能到达这个点，返回true/false。
-     * 还是很简单，bfs判断一下是不是所有0都connected就行，我基本上一遍就过了test cases。跑完之后面试官问了下复杂度。
+     * Still this kind of board, the input is the board and a point in the board, write function to judge whether all other points can reach this point, and return true/false.
+     * It's still very simple, bfs judges if all 0s are connected, I basically passed the test cases once. After the run, the interviewer asked about the complexity.
      *
      * 3.Now we have treasures, denoted by 1. Given a board and start and end positions for the player,
      * write a function to return the shortest simple path from start to end that includes all the treasures,
@@ -55,7 +55,7 @@ public class Treasures {
      *
      *
      *  #Another description:
-     *  这个是第三问，前一问也很简单，我记得就是给两个点判断能不能从A走到B。第一问就更简单了，给一个点返回能走通的neighbors
+     * This is the third question. The previous question is also very simple. I remember to judge whether we can go from A to B at two points. The first question is even simpler, give a point to return the neighbors that can pass through
      *  Now the board also includes treasures, denoted by 1.
      *
      *  Given a board and start and end positions for the player, write a function to return the shortest simple
@@ -159,7 +159,7 @@ public class Treasures {
      * }
      *
      *
-     * int main()
+     * int main ()
      * {
      *     qustion1(1,2,4,5);
      *     bool res=qustion2(2,1);
@@ -174,8 +174,8 @@ public class Treasures {
 
         int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, -1}, {0, 1}};
         for (int[] dir : dirs) {
-            int nx = x + dir[0];
-            int ny = x + dir[1];
+            int nx = x + dir [0];
+            int ny = x + dir [1];
             if (nx < 0 || nx >= matrix.length || ny < 0 || ny >= matrix[0].length) continue;
             if (matrix[nx][ny] == -1) continue;
 
@@ -223,12 +223,12 @@ public class Treasures {
 
 
 
-    static List<int[]> treasure(int[][] matrix, int starti, int startj, int endi, int endj) {
+    static List <int []> treasure (int [] [] matrix, int starti, int startj, int endi, int endj) {
         int row = matrix.length, col = matrix[0].length, totalTreasure = 0;
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
                 if (matrix[i][j] == 1) {
-                    totalTreasure++;
+                    totalTreasure ++;
                 }
             }
         }
@@ -254,7 +254,7 @@ public class Treasures {
 
     static void dfs(int[][] matrix, int i, int j, int count, int totalTreasure, int endi, int endj, List<List<int[]>> res, List<int[]> cur) {
         int row = matrix.length, col = matrix[0].length;
-        int[][] dir = new int[][]{{1, 0}, {-1, 0}, {0, -1}, {0, 1}};
+        int [] [] dir = new int [] [] {{1, 0}, {-1, 0}, {0, -1}, {0, 1}};
 
         if (i >= 0 && i < row && j >= 0 && j < col) {
             if (matrix[i][j] == 1 || matrix[i][j] == 0) {
@@ -271,7 +271,7 @@ public class Treasures {
                     return;
                 }
                 for (int[] d : dir) {
-                    int newi = i + d[0], newj = j + d[1];
+                    int newi = i + d [0], newj = j + d [1];
                     //   System.out.println(i + " " + j + " " + newi + " " + newj);
                     dfs(matrix, newi, newj, count, totalTreasure, endi, endj, res, cur);
                 }

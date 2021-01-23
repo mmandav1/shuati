@@ -7,31 +7,31 @@ import java.util.Set;
 
 public class Design_Sparse_Vector {
     /**
-     * Q1: 設計一個 sparse vector class
+     * Q1: Design a sparse vector class
      *
      * sparseVector v = new sparseVector(100); //size constructor; size is 100.
-     *     v.set(0, 1.0);
-     *     v.set(3, 2.0);
-     *     v.set(80,-4.5);
+     *     v.set(0, 1.0);
+     *     v.set(3, 2.0);
+     *     v.set(80,-4.5);
      *
-     *     System.out.println(v.get(80)); //should print -4.5
-     *     System.out.println(v.get(50)); //should print 0.0
+     *     System.out.println(v.get(80)); //should print -4.5
+     *     System.out.println(v.get(50)); //should print 0.0
      *
-     *     try {
-     *        System.out.println(v.get(101)); //error -- index out of range
-     *        throw new IllegalStateException("We should not get here, an exception should have been thrown");
-     *     } catch (IndexOutOfBoundsException t) {
-     *        // success
-     *     }
+     *     try {
+     *        System.out.println(v.get(101)); //error -- index out of range
+     *        throw new IllegalStateException("We should not get here, an exception should have been thrown");
+     *     } catch (IndexOutOfBoundsException t) {
+     *        // success
+     *     }
      *
-     *     System.out.println(v.toString()); //should print something like [1.0, 0.0, 0.0, 2.0, 0.0, ...]  
+     *     System.out.println(v.toString()); //should print something like [1.0, 0.0, 0.0, 2.0, 0.0, ...]  
      *
      *
      * Q2:
      *
      * Add these operations to your library: Addition, dot product, and cosine.
-     * Formulae for each are provided below; we’re more interested in you writing
-     * the code than whether you’ve memorized the formula. For each operation,
+     * Formulae for each are provided below; we�re more interested in you writing
+     * the code than whether you�ve memorized the formula. For each operation,
      * your code should throw an error if the two input vectors are not equal
      * length.
      *
@@ -46,13 +46,13 @@ public class Design_Sparse_Vector {
      *
      * v3 = new vector(2)
      * print v1.add(v2) //should print [4.0, 7.0, 0.0, 3.0, 0.0]
-     * print v1.add(v3) //error -- vector lengths don’t match
+     * print v1.add(v3) //error -- vector lengths don�t match
      *
      * print v1.dot(v2) //should print 10
-     * print v1.dot(v3) //error -- vector lengths don’t match
+     * print v1.dot(v3) //error -- vector lengths don�t match
      *
      * print v1.cos(v2) //should print 0.433
-     * print v1.cos(v3) //error -- vector lengths don’t match
+     * print v1.cos(v3) //error -- vector lengths don�t match
      *
      *
      * Formulae:
@@ -205,8 +205,8 @@ public class Design_Sparse_Vector {
             sv1.add(sv2);
             // sv1.add(sv3);
             // add(sv1, sv3);
-            sv1.dot(sv2);
-            // dot(sv1, sv3);
+            sv1.dot (sv2);
+            // dot (sv1, sv3);
             sv1.cosine(sv2);
             sv1.cosine(sv3);
         } catch (Exception e) {
@@ -214,4 +214,3 @@ public class Design_Sparse_Vector {
         }
     }
 }
-

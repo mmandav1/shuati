@@ -7,16 +7,16 @@ import java.util.Set;
 
 public class Basic_Calculator {
     /**
-     * 1. 给一个string包括数字和+ -， 求结果。（简单版计算器）
-     * 2.follow up：如果包括括号怎么做。
-     * 3.follow up： 不光有数字和operator，还有一些变量，这些变量有些可以表示为一个数值，
-     *   需要从给定的map里去get这个变量的value。然后有的变量不能转为数字，所以结果要包含这
-     *   些不可变成数字的单词以及其他数字部分通过计算器得到的结果。
+     * 1. Give a string including numbers and + -, and find the result. (Simple calculator)
+     * 2.follow up: what to do if brackets are included.
+     * 3.follow up: not only numbers and operators, but also some variables, some of these variables can be expressed as a number,
+     * Need to get the value of this variable from the given map. Then some variables cannot be converted to numbers, so the result should include this
+     * Some words that cannot be turned into numbers and other digital parts are the results obtained by calculator.
      *
-     * 第3题当时写完了，但是面试官只给了input，他给我的map用到了immutableMap这个interface，
-     * lz太菜第一次见这个东西，不知道该import什么java包，问面试官让我自己google，鼓捣了半天
-     * 一直报错说找不到class，我就说能不能换成hashmap，一个一个put进去，面试官说不行。。。
-     * 我在改的时候就到时间了，没run出来非常尴尬。。
+     * Question 3 was finished at the time, but the interviewer only gave input, and the map he gave me used the interface of immutableMap.
+     * The first time I saw this thing in lz Taicai, I didn�t know what java package to import. I asked the interviewer to let me google it myself. I played around for a long time.
+     * I kept getting an error saying that I could not find the class, so I asked if I could replace it with a hashmap and put it in one by one. The interviewer said no . .
+     * It's time when I am changing, and it is very embarrassing to come out without running. .
      */
 
     static int calculator(String s) {
@@ -94,7 +94,7 @@ public class Basic_Calculator {
     }
 
 /*
-    import java.util.*;
+    import java.util. *;
 import com.google.common.collect.ImmutableMap;
 
 class GfG {

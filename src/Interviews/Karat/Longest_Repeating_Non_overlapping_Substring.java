@@ -24,7 +24,7 @@ public class Longest_Repeating_Non_overlapping_Substring {
      * Output : an
      *          or na
      *
-     * 找到一个string里面最长的重复substring的长度 （aaaaaaaabbbbbaaa -> a 8)??
+     * Find the length of the longest repeated substring in a string (aaaaaaaabbbbbaaa -> a 8)??
      */
 
     /**

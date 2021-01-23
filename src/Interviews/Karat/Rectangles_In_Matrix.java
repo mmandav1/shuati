@@ -7,14 +7,14 @@ import java.util.Set;
 
 public class Rectangles_In_Matrix {
     /**
-     * 1.给一个矩阵，矩阵里的每个元素是1，但是其中分布着一个长方形区域， 这个长方形区域中的元素为0.
-     *   已知里面的0可以构成一个矩形，要求返回矩形的左上角和右下角坐标
+     * 1. Given a matrix, each element in the matrix is ​​1, but there is a rectangular area distributed in it, and the elements in this rectangular area are 0.
+     * Knowing that the 0 inside can form a rectangle, it is required to return the coordinates of the upper left corner and the lower right corner of the rectangle
      *
-     * 2.如果 Matrix 中有多个由0组成的长方体，请返回多套值（前提每两个长方体之间是不会连接(!!!),所以放心）.
-     *   要求输出每个长方形的位置（用长方形的左上角元素坐标和右下角元素坐标表示, 输⼊入⼀一定有效，
-     *   保证有⼀一个满⾜足要求的矩形）。
+     * 2. If there are multiple cuboids composed of 0 in the Matrix, please return multiple sets of values ​​(provided that every two cuboids will not be connected (!!!), so rest assured).
+     * It is required to output the position of each rectangle (expressed by the coordinates of the upper left corner element and the lower right corner element of the rectangle, the input must be valid,
+     * Ensure that there is a rectangle that meets the requirements).
      *
-     *   要求不改变输入的做法(!!!)
+     * It is required not to change the input method (!!!)
      *
      * example：
      * input:
@@ -33,19 +33,19 @@ public class Rectangles_In_Matrix {
      * [4,1,4,2]
      * ]
      *
-     * 3.不过还有第三问，就是connected components
-     * 第三问 基本上就是leetcode connected components,只不过是返回一个list of lists，每个list是一个component的所有点坐标
-     * 那个图是1,0组成的矩阵，0组成的就是各种图形。
+     * 3. But there is a third question, which is connected components
+     * The third question is basically leetcode connected components, it just returns a list of lists, each list is all the point coordinates of a component
+     * That graph is a matrix composed of 1,0, and 0 composed of various graphs.
      *
-     * 跟前面关系的确不大,如果矩阵里有多个不规则的形状，返回这些形状。这里需要自己思考并定义何谓“返回这些形状”
+     * It is really not related to the previous one. If there are multiple irregular shapes in the matrix, return these shapes. Here you need to think about and define what it means to "return these shapes"
      *
      * #
-     * 题目是给一个matrix由01构成，其中有一个0组成的矩形，其余都是1，找出这个矩形的左上及右下坐标。
-     * 遍历matrix碰到第一个0就上下左右四个方向找(?)，得到上左下右边界后break。
-     * 提问时空间复杂度。测试所有能想到的corner cases，就是这一步耽误了不少时间。
+     * The question is to give a matrix composed of 01, in which there is a rectangle composed of 0, and the rest are 1, find the upper left and lower right coordinates of this rectangle.
+     * Traverse the matrix to find the first zero (?) in the four directions up, down, left, and right, and break after getting the upper left, lower right boundary.
+     * Space complexity when asking questions. Testing all conceivable corner cases is this step which takes a lot of time.
      *
-     * follow up： matrix中不止一个0矩阵，找出所有矩阵的上左下右坐标并返回。. visit 1point3acres for more.
-     * 想法是用boolean[][] color来对矩阵元素进行标记，dfs找到未被标记0元素的所有邻接0，然后color设为true，避免重复查找
+     * follow up: There is more than one 0 matrix in the matrix, find the upper left, lower right coordinates of all matrices and return. . visit 1point3acres for more.
+     * The idea is to use boolean[][] color to mark the matrix elements, dfs finds all adjacent 0s of the unmarked 0 elements, and then color is set to true to avoid repeated searches
      */
 
     static int[] rectangle1(int[][] matrix) {
@@ -107,8 +107,8 @@ public class Rectangles_In_Matrix {
                     res.add(new int[]{i, j, iRight - 1, jDown - 1});
 
                     /**
-                     * 这个是改变输入的算法，如果不改变输入，需要用另外一个
-                     * visited[][] 记录已经访问过的单元。
+                     * This is the algorithm to change the input, if you don’t change the input, you need to use another one
+                     * visited[][] records the units that have been visited.
                      */
                     fill(i, j, iRight - 1, jDown - 1, matrix);
                 }
@@ -138,7 +138,7 @@ public class Rectangles_In_Matrix {
     }
 
     static void dfs(int[][] matrix, int i, int j, int row, int col, List<int[]> cur) {
-        int[][] dir = new int[][]{{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+        int [] [] dir = new int [] [] {{- 1, 0}, {1, 0}, {0, -1}, {0, 1}};
         if (i < 0 || i >= row || j < 0 || j >= col || matrix[i][j] == 1) {
             return;
         }

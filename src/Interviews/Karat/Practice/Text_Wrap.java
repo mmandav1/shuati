@@ -1,4 +1,4 @@
-package src.Interviews.Karat.Practice;
+package Interviews.Karat.Practice;
 
 import java.util.ArrayList;
 import java.util.List;
